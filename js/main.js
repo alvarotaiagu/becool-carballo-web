@@ -348,7 +348,14 @@
   /* ================================================================
      A partir de aqui, solo movimiento.
      ================================================================ */
-  if (!motion) return;
+  if (!motion) {
+    /* la cortina se retira ANTES del return: el modulo de abajo ya no se
+       ejecuta y una persiana atascada tapa el sitio entero */
+    const tapa = $("[data-cortina]");
+    if (tapa) tapa.hidden = true;
+    html.classList.remove("cortina-puesta");
+    return;
+  }
 
   /* ---------- Lenis ---------- */
   let lenis = null;
@@ -431,6 +438,76 @@
     });
   });
 
+
+  /* ---------- Cortina de entrada (preloader) ----------
+     Gesto propio de esta plantilla: la persiana del escaparate. El rotulo
+     se enciende de izquierda a derecha con clip-path (un neon que arranca)
+     y luego la persiana SE SUBE POR LAMAS, de abajo arriba y con retardo
+     entre ellas. Cada lama sube la ventana entera, no su propia altura: si
+     subiera solo lo suyo se meteria debajo de la de arriba y no destaparia
+     nada.
+
+     Dos momentos distintos:
+       - alAbrirse(fn) -> cuando la persiana EMPIEZA a subir, para que las
+         perchas del hero ya esten entrando cuando asoma el escaparate.
+       - retirar()     -> al terminar: quita el nodo, devuelve el scroll y
+         refresca ScrollTrigger, que midio con overflow:hidden.
+     Va aqui y no mas arriba porque necesita `lenis`, que se declara con
+     let justo encima: leerlo antes seria un error de zona muerta. */
+  const cortina = (function initCortina() {
+    const el = $("[data-cortina]");
+    const espera = [];
+    let abierta = false;
+    let fuera = false;
+
+    function abrir() {
+      if (abierta) return;
+      abierta = true;
+      espera.splice(0).forEach((fn) => { try { fn(); } catch (e) {} });
+    }
+    function retirar() {
+      abrir();
+      if (fuera) return;
+      fuera = true;
+      if (el) el.hidden = true;
+      html.classList.remove("cortina-puesta");
+      if (lenis) lenis.start();
+      if (gsapReady) ScrollTrigger.refresh();
+    }
+
+    const api = { alAbrirse: (fn) => (abierta ? fn() : espera.push(fn)) };
+    if (!el) { retirar(); return api; }
+
+    html.classList.add("cortina-puesta");
+    if (lenis) lenis.stop();
+
+    const centro = $(".cortina-centro", el);
+    const script = $(".cortina-script", el);
+    const raya = $(".cortina-raya", el);
+    const pie = $(".cortina-pie", el);
+    const lamas = $$(".cortina-lama", el);
+    const SUBE = 1.3;
+
+    const tl = gsap.timeline({ onComplete: retirar });
+    if (script) tl.to(script, { clipPath: "inset(0 0% 0 0)", duration: 1.0, ease: "power2.inOut" }, 0);
+    if (raya) tl.to(raya, { scaleX: 1, duration: 0.7, ease: "power2.inOut" }, 0.65);
+    if (pie) tl.to(pie, { opacity: 1, letterSpacing: "0.36em", duration: 0.8, ease: "power2.out" }, 0.7);
+
+    tl.add(abrir, SUBE);
+    if (centro) tl.to(centro, { opacity: 0, duration: 0.35, ease: "power2.in" }, SUBE);
+    if (lamas.length) {
+      tl.to(lamas, {
+        y: () => -(window.innerHeight + 40),
+        duration: 0.9,
+        ease: "expo.inOut",
+        stagger: { each: 0.05, from: "end" }
+      }, SUBE + 0.1);
+    }
+
+    setTimeout(retirar, 5200);
+    return api;
+  })();
+
   /* ---------- Hero: las prendas entran deslizando por la barra ----------
      Balanceo minimo de percha al frenar: una oscilacion de +-2 grados y
      se acabo. Nada de pendulo largo. */
@@ -439,7 +516,10 @@
     if (!perchas.length) return;
     const desde = window.innerWidth + 120;
     gsap.set(perchas, { x: desde, rotation: 0 });
-    const tl = gsap.timeline({ delay: 0.15 });
+    const tl = gsap.timeline({ delay: 0.15, paused: true });
+    /* las perchas no entran hasta que sube la persiana: lo primero que se
+       ve del escaparate ya esta en movimiento */
+    cortina.alAbrirse(() => tl.play());
     perchas.forEach((p, i) => {
       const t = i * 0.085;
       tl.to(p, { x: 0, duration: 0.78, ease: "power3.out" }, t)
@@ -454,16 +534,18 @@
       $(".hero-vinilo"), $(".hero-linea"), $(".hero-insignia"), $(".hero-botones")
     ].filter(Boolean);
     if (!partes.length) return;
-    gsap.from(partes, {
+    const tlTexto = gsap.timeline({ delay: 0.2, paused: true });
+    tlTexto.from(partes, {
       y: 22,
       opacity: 0,
       duration: 1,
       ease: "power3.out",
       stagger: 0.12,
-      delay: 0.5
+      immediateRender: false
     });
     const raya = $(".hero-entrar i");
-    if (raya) gsap.from(raya, { scaleY: 0, duration: 0.9, ease: "power2.out", delay: 1.2 });
+    if (raya) tlTexto.from(raya, { scaleY: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 0.7);
+    cortina.alAbrirse(() => tlTexto.play());
   })();
 
   /* ---------- Las tarjetas se deslizan a su sitio en la barra ----------

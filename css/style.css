@@ -194,6 +194,40 @@ a { color: inherit; }
 }
 
 /* ---------------------------------------------------------------
+   Cortina de entrada (preloader)
+   La persiana del escaparate. El rotulo se enciende de izquierda a
+   derecha (clip-path, como un neon) y luego la persiana SE SUBE POR
+   LAMAS: cada lama sale de abajo arriba con un retardo, que es como
+   sube una persiana de verdad, no como un telon de una pieza.
+   Los estados "vacios" viven bajo html.has-motion: sin GSAP la cortina
+   se retira al instante y nadie ve un panel a medias.
+   Ojo: .cortina usa display:grid, asi que [hidden] necesita su regla.
+   --------------------------------------------------------------- */
+.cortina { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; background: var(--marco); }
+.cortina[hidden] { display: none; }
+html.cortina-puesta { overflow: hidden; }
+
+.cortina-persiana { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.cortina-lama {
+  flex: 1 1 0;
+  background: linear-gradient(180deg, #1C1C1C 0%, #131313 46%, #0B0B0B 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.055);
+  will-change: transform;
+}
+
+.cortina-centro { position: relative; display: grid; justify-items: center; gap: 1rem; padding: 0 1.5rem; text-align: center; }
+.cortina-script { width: min(56vw, 22rem); height: auto; filter: invert(1) brightness(1.7); }
+.cortina-raya { display: block; width: min(34vw, 190px); height: 2px; background: var(--acento); transform-origin: 50% 50%; }
+.cortina-pie { font-family: var(--sans); font-size: .7rem; font-weight: 600; letter-spacing: .36em; text-transform: uppercase; color: rgba(237,231,221,.6); }
+
+html.has-motion .cortina-script { clip-path: inset(0 100% 0 0); }
+html.has-motion .cortina-raya { transform: scaleX(0); }
+html.has-motion .cortina-pie { opacity: 0; letter-spacing: .62em; }
+
+/* con movimiento reducido no debe verse ni un fotograma */
+@media (prefers-reduced-motion: reduce) { .cortina { display: none; } }
+
+/* ---------------------------------------------------------------
    Cabecera fija — el dintel del escaparate
    --------------------------------------------------------------- */
 .barra-nav {
