@@ -1,0 +1,12 @@
+{
+  "name": "BeCool · Clothing, shoes & more",
+  "short_name": "BeCool",
+  "description": "Tienda de ropa de mujer, calzado y complementos en Rúa Hórreo, 14, Carballo (A Coruña).",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "icons": [
+    { "src": "assets/img/brand/becool-icono.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,14 @@
+<!-- BeCool · prenda del escaparate: abrigo largo con solapas de muesca y cinto. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 470" role="img" aria-label="Abrigo colgado de una percha">
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100,46 C100,32 89,30 89,19 C89,10 96,5 102,5 C110,5 115,11 115,20"/>
+    <path d="M100,46 L38,93 L162,93 Z"/>
+  </g>
+  <path fill="#D8CFC2" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+        d="M64,90 C50,95 42,103 39,117 L22,215 C20,226 27,231 36,228 L54,221 L52,374 C52,381 56,384 63,384 L137,384 C144,384 148,381 148,374 L146,221 L164,228 C173,231 180,226 178,215 L161,117 C158,103 150,95 136,90 L100,132 Z"/>
+  <path fill="#C4B9A7" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+        d="M64,90 L100,132 L83,152 L56,108 Z M136,90 L100,132 L117,152 L144,108 Z"/>
+  <path fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" d="M100,132 L100,384"/>
+  <rect x="52" y="236" width="96" height="13" rx="2" fill="#111111"/>
+  <g fill="#8E8474"><circle cx="112" cy="196" r="4"/><circle cx="112" cy="286" r="4"/></g>
+</svg>

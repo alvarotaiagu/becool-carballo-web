@@ -1,0 +1,1234 @@
+/* =====================================================================
+   BeCool · Carballo — "Escaparate"
+   =====================================================================
+   El lenguaje de esta plantilla es la cristalera de Rúa Hórreo: marco
+   negro fino, paños de cristal, barra de colgar y percha. Nada cuelga
+   de un cordel largo, nada se balancea sin parar, nada se escribe solo.
+
+   Paleta cerrada a proposito:
+     blanco  #FFFFFF  el cristal
+     negro   #111111  el marco, el texto y la barra
+     lino    #EDE7DD  el interior de la tienda
+     acento  variable, por defecto terracota  -> SOLO precios y CTA
+
+   Para cambiar el acento de temporada se toca UNA linea: --acento.
+   ===================================================================== */
+
+:root {
+  /* --- el unico color de temporada. Cambiar aqui y en ningun sitio mas. --- */
+  --acento: #C46A4A;
+
+  --cristal: #FFFFFF;
+  --marco: #111111;
+  --lino: #EDE7DD;
+  --lino-hondo: #E2DACC;
+  --lino-borde: #D3C9B8;
+  --tinta: #111111;
+  --tinta-suave: #57524A;
+  --tinta-tenue: #8B8479;
+
+  --serif: "Fraunces", "Times New Roman", serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --nav-h: 4.5rem;
+  --ancho: 78rem;
+  --marco-px: clamp(7px, 0.85vw, 12px);
+
+  /* escala horaria de la seccion "Cuando venir": de las 10 a las 21.
+     Las etiquetas y las barras usan estas dos variables, nunca numeros
+     sueltos: si se separan, la marca de las 14 deja de caer sobre la
+     barra de las 14. */
+  --hora-0: 10;
+  --hora-span: 11;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  margin: 0;
+  background: var(--cristal);
+  color: var(--tinta-suave);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.saltar {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--marco); color: #fff; padding: .75rem 1.25rem;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+}
+.saltar:focus { left: 0; }
+
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+/* ---------------------------------------------------------------
+   Tipografia
+   --------------------------------------------------------------- */
+.titular {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6.4vw, 5.25rem);
+  line-height: .98;
+  letter-spacing: -.022em;
+  color: var(--tinta);
+  margin: 0;
+}
+.rotulo {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  margin: 0 0 1.1rem;
+}
+.entradilla {
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  margin: 1.4rem 0 0;
+}
+.cabecera { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.cabecera-centro { text-align: center; }
+.cabecera-centro .entradilla { margin-inline: auto; }
+
+/* Char reveal: la palabra tambien va inline-block + nowrap, o el
+   navegador parte "colgado" por la mitad al final de la linea. */
+.split-word { display: inline-block; white-space: nowrap; }
+.split-char { display: inline-block; will-change: transform, opacity; }
+
+.pendiente,
+.nota-pendiente b,
+.prenda-vacio {
+  color: var(--tinta);
+}
+.pendiente {
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--acento);
+  margin-top: 1.2rem;
+}
+.nota-pendiente {
+  max-width: 62ch;
+  margin: clamp(1.8rem, 3vw, 2.6rem) 0 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--lino-borde);
+  font-size: .9rem;
+  color: var(--tinta-tenue);
+}
+
+/* ---------------------------------------------------------------
+   Botones
+   --------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .95rem 1.75rem;
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+  will-change: transform;
+}
+.btn-acento { background: var(--acento); color: #fff; border-color: var(--acento); }
+.btn-acento:hover { background: var(--marco); border-color: var(--marco); }
+.btn-linea { background: transparent; color: var(--tinta); border-color: var(--marco); }
+.btn-linea:hover { background: var(--marco); color: #fff; }
+
+/* ---------------------------------------------------------------
+   Recorrido de la pagina
+   La barra de colgar, otra vez: se va tiñendo de negro y una percha
+   diminuta la recorre. Va por encima de la cabecera y fuera de ella,
+   para que siga viendose cuando la cabecera se retira al bajar.
+   --------------------------------------------------------------- */
+.progreso {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 110;
+  background: var(--lino-borde);
+  pointer-events: none;
+  overflow: visible;
+}
+.progreso-recorrido {
+  position: absolute;
+  inset: 0;
+  background: var(--marco);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.progreso-percha {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 28px;
+  height: 18px;
+  margin-left: -14px;
+  overflow: visible;
+}
+
+/* ---------------------------------------------------------------
+   Cabecera fija — el dintel del escaparate
+   --------------------------------------------------------------- */
+.barra-nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1.5px solid var(--marco);
+  transition: transform .45s ease;
+}
+.barra-nav-interior {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  height: var(--nav-h);
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.marca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+.marca-script { width: clamp(76px, 7.5vw, 98px); height: auto; }
+.marca-lema {
+  font-size: .5rem;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  margin-top: .18rem;
+  padding-left: .15rem;
+}
+.nav-enlaces {
+  margin-left: auto;
+  display: flex;
+  gap: clamp(1rem, 2.2vw, 2.1rem);
+}
+.nav-enlaces a {
+  position: relative;
+  font-size: .74rem;
+  font-weight: 400;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--tinta);
+  padding: .3rem 0;
+}
+.nav-enlaces a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--marco);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.nav-enlaces a:hover::after { transform: scaleX(1); }
+.btn-nav { padding: .7rem 1.2rem; font-size: .68rem; }
+
+.nav-boton {
+  display: none;
+  margin-left: auto;
+  width: 2.75rem; height: 2.75rem;
+  background: none; border: 1.5px solid var(--marco);
+  cursor: pointer;
+  align-items: center; justify-content: center;
+}
+.nav-boton-lineas { display: block; width: 1.1rem; }
+.nav-boton-lineas i {
+  display: block; height: 1.5px; background: var(--marco);
+  transition: transform .35s ease, opacity .35s ease;
+}
+.nav-boton-lineas i + i { margin-top: .32rem; }
+.nav-boton[aria-expanded="true"] .nav-boton-lineas i:first-child { transform: translateY(2.4px) rotate(45deg); }
+.nav-boton[aria-expanded="true"] .nav-boton-lineas i:last-child { transform: translateY(-2.4px) rotate(-45deg); }
+
+.nav-movil {
+  border-top: 1.5px solid var(--marco);
+  background: var(--cristal);
+  padding: 1rem clamp(1rem, 4vw, 2.5rem) 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.nav-movil[hidden] { display: none; }
+.nav-movil a {
+  padding: .7rem 0;
+  font-size: .8rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--tinta);
+  border-bottom: 1px solid var(--lino-borde);
+}
+
+/* ===============================================================
+   HERO · el escaparate
+   =============================================================== */
+.hero {
+  position: relative;
+  min-height: 640px;
+  height: 100svh;
+  background: var(--lino);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding-top: var(--nav-h);
+  --barra-y: clamp(6rem, 15vh, 10rem);
+  --barra-h: clamp(7px, .75vw, 11px);
+  --pw: clamp(78px, 8.6vw, 140px);
+}
+
+/* el interior: pared de lino con una veladura suave hacia el fondo */
+.hero-interior {
+  position: absolute;
+  inset: var(--nav-h) 0 0;
+  background:
+    radial-gradient(120% 80% at 50% 12%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, var(--lino) 0%, var(--lino-hondo) 100%);
+}
+.hero-barra {
+  position: absolute;
+  left: 0; right: 0;
+  top: var(--barra-y);
+  height: var(--barra-h);
+  background: var(--marco);
+}
+.hero-barra::before,
+.hero-barra::after {
+  /* los dos montantes que sujetan la barra desde el techo de la tienda */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: var(--barra-y);
+  width: var(--barra-h);
+  background: var(--marco);
+}
+.hero-barra::before { left: var(--marco-px); }
+.hero-barra::after { right: var(--marco-px); }
+
+/* Cada prenda se coloca por porcentaje, no con un flex centrado: asi se
+   sabe exactamente por donde pasa cada paño y las prendas nunca caen
+   encima de la linea negra ni del vinilo. El aro del gancho esta a 16 de
+   470 en el dibujo, o sea al 8% del ancho (el alto es 2,35 x el ancho):
+   por eso la fila sube ese tanto y la barra le pasa por dentro. */
+.hero-perchas {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(var(--barra-y) + var(--barra-h) / 2 - var(--pw) * .08);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.percha {
+  position: absolute;
+  top: 0;
+  width: var(--pw);
+  margin-left: calc(var(--pw) / -2);
+  transform-origin: 50% 3%;
+}
+.percha img { width: 100%; height: auto; }
+.percha:nth-child(1) { left: 5.5%; }
+.percha:nth-child(2) { left: 13%; }
+.percha:nth-child(3) { left: 20.5%; }
+.percha:nth-child(4) { left: 79.5%; }
+.percha:nth-child(5) { left: 87%; }
+.percha:nth-child(6) { left: 94.5%; }
+
+/* el cristal: reflejo estatico y marco de paños. Nunca canvas. */
+.hero-cristal {
+  position: absolute;
+  inset: var(--nav-h) 0 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 var(--marco-px) var(--marco);
+}
+.hero-reflejo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    116deg,
+    rgba(255,255,255,0) 0 22%,
+    rgba(255,255,255,.055) 22% 31%,
+    rgba(255,255,255,0) 31% 40%,
+    rgba(255,255,255,.04) 40% 45%,
+    rgba(255,255,255,0) 45% 100%);
+}
+.hero-panos i {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: var(--marco-px);
+  background: var(--marco);
+}
+.hero-panos i:first-child { left: calc(26% - var(--marco-px) / 2); }
+.hero-panos i:last-child { left: calc(74% - var(--marco-px) / 2); }
+
+/* el contenido vive dentro del paño central: se le pone el ancho de ese
+   paño para que ni una linea de texto cruce el marco negro */
+.hero-contenido {
+  position: relative;
+  z-index: 3;
+  grid-row: 2;
+  width: min(46vw, 32rem);
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 0 clamp(5.5rem, 13vh, 9rem);
+}
+.hero-vinilo {
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vinilo-script {
+  width: min(88%, clamp(190px, 22vw, 320px));
+  height: auto;
+}
+.vinilo-lema {
+  font-family: var(--sans);
+  font-size: clamp(.6rem, 1vw, .76rem);
+  font-weight: 300;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  margin-top: .5rem;
+  padding-left: .3em;
+}
+.hero-linea {
+  font-size: clamp(.78rem, 1.15vw, .92rem);
+  font-weight: 300;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  margin: 0 0 1.1rem;
+}
+.hero-linea b { font-weight: 600; color: var(--acento); }
+.hero-insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0 0 2rem;
+  padding: .4rem .95rem;
+  border: 1.5px solid var(--marco);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  background: rgba(255,255,255,.55);
+}
+.hero-insignia b { font-weight: 600; }
+.estrellas { color: var(--acento); letter-spacing: .05em; font-size: .78rem; }
+.hero-botones { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; }
+
+.hero-entrar {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(1rem, 2.5vh, 2rem);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  font-size: .62rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+.hero-entrar i {
+  display: block;
+  width: 1px;
+  height: 2.2rem;
+  background: var(--marco);
+  transform-origin: top center;
+}
+
+/* ===============================================================
+   Marquesina — la barra negra que cruza la pagina
+   =============================================================== */
+.marquesina {
+  background: var(--marco);
+  color: var(--lino);
+  overflow: hidden;
+  padding: .95rem 0;
+  white-space: nowrap;
+}
+.marquesina-pista {
+  display: inline-flex;
+  will-change: transform;
+}
+.marquesina-pista span {
+  font-size: .72rem;
+  font-weight: 300;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  padding-right: 1.5rem;
+}
+
+/* ===============================================================
+   Secciones y el motivo del paño
+   =============================================================== */
+.seccion {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: clamp(4.5rem, 11vw, 9rem) clamp(1.25rem, 5vw, 3rem);
+}
+
+.pano { position: relative; }
+.pano-marco { position: absolute; inset: 0; pointer-events: none; }
+.pano-marco i { position: absolute; background: var(--marco); }
+.pano-marco i:nth-child(1) { top: 0; left: 0; width: 100%; height: 1.5px; transform-origin: left center; }
+.pano-marco i:nth-child(2) { top: 0; right: 0; width: 1.5px; height: 100%; transform-origin: center top; }
+.pano-marco i:nth-child(3) { bottom: 0; right: 0; width: 100%; height: 1.5px; transform-origin: right center; }
+.pano-marco i:nth-child(4) { bottom: 0; left: 0; width: 1.5px; height: 100%; transform-origin: center bottom; }
+/* el marco solo arranca vacio si hay movimiento: sin GSAP se ve entero */
+html.has-motion .pano-marco i:nth-child(1),
+html.has-motion .pano-marco i:nth-child(3) { transform: scaleX(0); }
+html.has-motion .pano-marco i:nth-child(2),
+html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
+
+.pano-dentro { padding: clamp(1.75rem, 4vw, 3.5rem); }
+
+/* ===============================================================
+   Recién colgado
+   =============================================================== */
+.novedades .pano-dentro { padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+.novedades-mandos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+.vistas { display: flex; border: 1.5px solid var(--marco); }
+.vista-btn {
+  background: none;
+  border: 0;
+  padding: .6rem 1.1rem;
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  cursor: pointer;
+  transition: background-color .3s ease, color .3s ease;
+}
+.vista-btn + .vista-btn { border-left: 1.5px solid var(--marco); }
+.vista-btn.activa { background: var(--marco); color: #fff; }
+.novedades-pista {
+  margin: 0;
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+
+.colgador { position: relative; }
+.colgador-barra {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  height: 7px;
+  background: var(--marco);
+}
+.colgador-lista {
+  --gancho: 3.25rem;
+  list-style: none;
+  margin: 0;
+  padding: var(--gancho) 0 1.5rem;
+  display: flex;
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  cursor: grab;
+}
+.colgador-lista.arrastrando { cursor: grabbing; scroll-snap-type: none; }
+.colgador-lista.arrastrando a { pointer-events: none; }
+.colgador-lista::-webkit-scrollbar { height: 3px; }
+.colgador-lista::-webkit-scrollbar-thumb { background: var(--lino-borde); }
+
+.prenda {
+  flex: 0 0 auto;
+  width: clamp(215px, 25vw, 278px);
+  scroll-snap-align: start;
+  position: relative;
+}
+.prenda-caja {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+/* el gancho: aro sobre la barra y vastago hasta la tarjeta */
+.prenda-gancho {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--gancho, 3.25rem) * -1);
+  width: 18px;
+  height: var(--gancho, 3.25rem);
+  transform: translateX(-50%);
+}
+.prenda-gancho::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: -5px;
+  width: 18px; height: 18px;
+  margin-left: -9px;
+  border: 2px solid var(--marco);
+  border-radius: 50%;
+  background: transparent;
+}
+.prenda-gancho::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 11px; bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--marco);
+}
+.prenda-foto {
+  display: block;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--lino);
+  border: 1.5px solid var(--marco);
+  overflow: hidden;
+}
+.prenda-foto img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s cubic-bezier(.22,1,.36,1);
+}
+.prenda-caja:hover .prenda-foto img { transform: scale(1.04); }
+.prenda-vacio {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+.prenda-datos { display: block; padding: .95rem .1rem 0; }
+.prenda-cat {
+  display: block;
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+}
+.prenda-nombre {
+  display: block;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 40;
+  font-weight: 400;
+  font-size: 1.22rem;
+  line-height: 1.25;
+  color: var(--tinta);
+  margin: .3rem 0 .45rem;
+}
+.prenda-tallas {
+  display: block;
+  font-size: .68rem;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+/* etiqueta de precio: rectangulo pequeño con agujero y un cordel de una
+   sola linea que sale del borde superior de la tarjeta. Nada de cordeles
+   largos ni de balanceo continuo. */
+.etiqueta {
+  position: absolute;
+  right: -.5rem;
+  top: 0;
+  width: 116px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.etiqueta svg { grid-area: 1 / 1; width: 116px; height: 86px; }
+.etiqueta b {
+  grid-area: 1 / 1;
+  align-self: center;
+  transform: translate(12px, 13px);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: #fff;
+}
+
+/* modo rejilla: la misma lista, sin barra ni arrastre */
+.colgador[data-vista-actual="rejilla"] .colgador-barra,
+.colgador[data-vista-actual="rejilla"] .prenda-gancho { display: none; }
+.colgador[data-vista-actual="rejilla"] .colgador-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  overflow: visible;
+  padding-top: 0;
+  cursor: auto;
+}
+.colgador[data-vista-actual="rejilla"] .prenda { width: auto; }
+
+/* ===============================================================
+   Qué encontrarás — tres paños
+   =============================================================== */
+.encontraras { background: var(--cristal); }
+.panos-tres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+.pano-cat .pano-dentro {
+  position: relative;
+  min-height: 27rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.pano-num {
+  position: absolute;
+  top: 1rem; right: 1.25rem;
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  color: var(--tinta-tenue);
+}
+.pano-icono {
+  width: 5.75rem;
+  height: 5.75rem;
+  margin-bottom: 1.5rem;
+}
+.pano-cat h3 {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60;
+  font-weight: 300;
+  font-size: clamp(1.7rem, 2.6vw, 2.35rem);
+  line-height: 1.05;
+  color: var(--tinta);
+  margin: 0;
+}
+.pano-en {
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--acento);
+  margin: .45rem 0 1.1rem;
+}
+.pano-cat p { margin: 0 0 .5rem; font-size: .95rem; }
+.pano-cat .pendiente { margin-top: auto; padding-top: 1.5rem; }
+
+/* ===============================================================
+   Dentro de la tienda
+   =============================================================== */
+/* La rejilla lleva las alturas de fila PUESTAS a mano. Si se dejan en
+   auto, la foto (flex:1 dentro de una figura al 100%) y la fila se
+   piden la altura la una a la otra y el navegador acaba estirando las
+   imagenes a mil pixeles. */
+.galeria {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, clamp(180px, 17vw, 250px));
+  gap: clamp(.9rem, 2vw, 1.6rem);
+}
+.hueco { position: relative; }
+.hueco figure {
+  margin: 0;
+  padding: clamp(.5rem, .9vw, .8rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* la foto llena el paño y el pie se queda dentro del marco */
+.hueco img {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  object-fit: cover;
+  background: var(--lino);
+}
+.hueco-alto { grid-row: span 2; }
+.hueco-ancho { grid-column: span 2; }
+.hueco figcaption {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  padding: .7rem .15rem .1rem;
+  font-size: .72rem;
+  letter-spacing: .1em;
+  color: var(--tinta-suave);
+}
+.marca-foto {
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  border: 1px solid var(--lino-borde);
+  padding: .16rem .45rem;
+}
+
+/* ===============================================================
+   Cuándo venir
+   =============================================================== */
+.horario .pano-dentro { background: var(--lino); }
+.estado-ahora {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0 0 2rem;
+  padding: .45rem 1rem;
+  background: var(--cristal);
+  border: 1.5px solid var(--marco);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+.estado-ahora::before {
+  content: "";
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  background: var(--tinta-tenue);
+}
+.estado-ahora[data-abierto="si"]::before { background: var(--acento); }
+
+.franjas {
+  position: relative;
+  --col-nombre: 7.5rem;
+  --col-horas: 12rem;
+  --col-gap: 1rem;
+}
+.franjas-escala {
+  position: relative;
+  height: 1.4rem;
+  /* la escala arranca EXACTAMENTE donde arrancan las barras: misma
+     columna y ademas el hueco del grid, o la marca de las 14 deja de
+     caer sobre el final de la barra del sabado. */
+  margin-left: calc(var(--col-nombre) + var(--col-gap));
+  margin-right: calc(var(--col-horas) + var(--col-gap));
+}
+.franjas-escala span {
+  position: absolute;
+  top: 0;
+  left: calc((var(--h) - var(--hora-0)) / var(--hora-span) * 100%);
+  transform: translateX(-50%);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--tinta-tenue);
+}
+.franjas-dias { list-style: none; margin: 0; padding: 0; }
+.dia {
+  display: grid;
+  grid-template-columns: var(--col-nombre) 1fr var(--col-horas);
+  align-items: center;
+  gap: var(--col-gap);
+  padding: .55rem 0;
+  border-top: 1px solid var(--lino-borde);
+}
+.dia:last-child { border-bottom: 1px solid var(--lino-borde); }
+.dia-nombre {
+  font-size: .76rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+.dia-pista { position: relative; display: block; height: 1.15rem; }
+.dia-pista::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1px;
+  background: var(--lino-borde);
+}
+.tramo {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: calc((var(--desde) - var(--hora-0)) / var(--hora-span) * 100%);
+  width: calc((var(--hasta) - var(--desde)) / var(--hora-span) * 100%);
+  background: var(--marco);
+  transform-origin: left center;
+}
+.dia-horas {
+  font-size: .74rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  color: var(--tinta-suave);
+  text-align: right;
+}
+.dia-domingo { background: rgba(196, 106, 74, .07); }
+.dia-domingo .dia-nombre { color: var(--acento); font-weight: 600; }
+.dia-domingo .tramo { background: var(--acento); }
+.dia-domingo .dia-horas { color: var(--tinta); }
+.dia[data-hoy] .dia-nombre::after {
+  content: " · hoy";
+  font-weight: 400;
+  color: var(--tinta-tenue);
+}
+.horario-remate {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 60;
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.3vw, 1.9rem);
+  line-height: 1.3;
+  color: var(--tinta);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  max-width: 24ch;
+}
+.horario-remate b { font-weight: 400; color: var(--acento); }
+
+/* ===============================================================
+   Reseñas
+   =============================================================== */
+.nota-grande { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.nota-cifra {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-weight: 300;
+  font-size: clamp(4.5rem, 14vw, 10rem);
+  line-height: .9;
+  letter-spacing: -.03em;
+  color: var(--tinta);
+  margin: 0;
+}
+.nota-estrellas { color: var(--acento); font-size: .42em; vertical-align: .55em; }
+.nota-texto {
+  font-size: .76rem;
+  font-weight: 400;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin: 1rem 0 0;
+}
+.nota-texto b { font-weight: 600; color: var(--tinta); }
+.resenas-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+.pano-resena .pano-dentro { display: flex; flex-direction: column; min-height: 15rem; }
+.resena-estrellas { color: var(--acento); font-size: .8rem; letter-spacing: .12em; margin: 0 0 1rem; }
+.pano-resena blockquote { margin: 0; flex: 1; }
+.pano-resena blockquote p {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 40;
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--tinta-tenue);
+  margin: 0;
+}
+.resena-firma {
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  margin: 1.5rem 0 0;
+}
+
+/* ===============================================================
+   Instagram
+   =============================================================== */
+.insta-rejilla {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(.6rem, 1.4vw, 1rem);
+}
+.insta-rejilla a { display: block; text-decoration: none; }
+.insta-hueco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background: var(--lino);
+  border: 1.5px solid var(--marco);
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  text-align: center;
+  padding: .5rem;
+  transition: background-color .35s ease, color .35s ease;
+}
+.insta-rejilla a:hover .insta-hueco { background: var(--marco); color: var(--lino); }
+.insta-pie { display: flex; gap: .85rem; flex-wrap: wrap; margin: clamp(2rem, 4vw, 3rem) 0 0; }
+
+/* ===============================================================
+   Contacto
+   =============================================================== */
+.contacto-reja {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+.datos { margin: 0; display: grid; grid-template-columns: 1fr; }
+.datos dt {
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  margin-top: 1.5rem;
+}
+.datos dt:first-child { margin-top: 0; }
+.datos dd {
+  margin: .4rem 0 0;
+  font-size: 1.02rem;
+  color: var(--tinta);
+  line-height: 1.5;
+}
+.datos dd a { text-decoration: none; border-bottom: 1px solid var(--lino-borde); }
+.datos dd a:hover { border-bottom-color: var(--acento); }
+.datos dd.pendiente {
+  font-size: .8rem;
+  letter-spacing: .14em;
+  margin-top: .5rem;
+}
+
+.pano-mapa .pano-dentro { height: 100%; display: flex; }
+.map-consent {
+  flex: 1;
+  min-height: 22rem;
+  background: var(--lino);
+  border: 1.5px solid var(--lino-borde);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+.map-consent p { margin: 0; max-width: 34ch; font-size: .9rem; }
+.map-alt { font-size: .75rem !important; letter-spacing: .1em; }
+.map-consent iframe { width: 100%; height: 100%; min-height: 22rem; border: 0; display: block; }
+.map-consent.cargado { padding: 0; border: 0; background: none; display: block; }
+
+/* ===============================================================
+   Pie
+   =============================================================== */
+.pie {
+  background: var(--marco);
+  color: var(--lino);
+  padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem) clamp(2rem, 4vw, 3rem);
+}
+.pie-interior { max-width: var(--ancho); margin: 0 auto; }
+.marca-pie .marca-script { filter: invert(1); width: clamp(120px, 14vw, 180px); }
+.marca-pie .marca-lema { color: rgba(237, 231, 221, .65); }
+.pie-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem clamp(1rem, 2.5vw, 2rem);
+  margin: clamp(2rem, 4vw, 3rem) 0;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid rgba(237, 231, 221, .22);
+}
+.pie-nav a {
+  font-size: .7rem;
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(237, 231, 221, .8);
+  transition: color .3s ease;
+}
+.pie-nav a:hover { color: var(--cristal); }
+.pie-nota {
+  max-width: 78ch;
+  font-size: .82rem;
+  line-height: 1.7;
+  color: rgba(237, 231, 221, .6);
+}
+.pie-nota b { color: rgba(237, 231, 221, .9); font-weight: 500; }
+.pie-legal {
+  margin: 2rem 0 0;
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: .26em;
+  color: rgba(237, 231, 221, .38);
+}
+
+/* ===============================================================
+   Aviso de cookies
+   ---------------------------------------------------------------
+   Se oculta con [hidden] y AQUI NO HAY NINGUN display que pueda
+   ganarle: el display flex vive en :not([hidden]), no en la clase.
+   =============================================================== */
+.cookie-banner:not([hidden]) {
+  position: fixed;
+  z-index: 120;
+  left: clamp(.75rem, 3vw, 2rem);
+  right: clamp(.75rem, 3vw, 2rem);
+  bottom: clamp(.75rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  background: var(--cristal);
+  border: 1.5px solid var(--marco);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 18px 40px -28px rgba(17, 17, 17, .55);
+}
+.cookie-banner p { margin: 0; font-size: .85rem; max-width: 64ch; }
+.cookie-ack { flex: 0 0 auto; padding: .7rem 1.4rem; }
+
+/* ===============================================================
+   Responsive
+   =============================================================== */
+@media (max-width: 1100px) {
+  .panos-tres { grid-template-columns: 1fr; }
+  .pano-cat .pano-dentro { min-height: 0; }
+  .resenas-lista { grid-template-columns: 1fr; }
+  .contacto-reja { grid-template-columns: 1fr; }
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    grid-auto-rows: clamp(200px, 30vw, 290px);
+  }
+  .hueco-alto { grid-row: auto; }
+  .hueco-ancho { grid-column: span 2; }
+  .insta-rejilla { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Dos paños: el vinilo se centra en el paño izquierdo y las prendas
+   cuelgan en el derecho. Asi ningun texto cruza la linea negra. */
+@media (max-width: 999px) {
+  .hero { --pw: clamp(74px, 11vw, 112px); }
+  .hero-panos i:first-child { left: calc(50% - var(--marco-px) / 2); }
+  .hero-panos i:last-child { display: none; }
+  .percha:nth-child(1) { left: 62%; }
+  .percha:nth-child(2) { left: 76%; }
+  .percha:nth-child(3) { left: 90%; }
+  .percha:nth-child(n+4) { display: none; }
+  .hero-contenido {
+    width: auto;
+    margin: 0 50% 0 0;
+    padding: 0 clamp(1rem, 3vw, 2rem) clamp(5.5rem, 13vh, 9rem);
+  }
+  /* el reclamo de "entra" tambien vive en el paño izquierdo */
+  .hero-entrar { left: 25%; }
+}
+
+@media (max-width: 900px) {
+  .nav-enlaces, .btn-nav { display: none; }
+  .nav-boton { display: flex; }
+  .franjas-escala { margin-left: 0; margin-right: 0; }
+  .franjas { --col-nombre: 1fr; --col-horas: auto; }
+  .dia {
+    grid-template-columns: 1fr auto;
+    gap: .35rem 1rem;
+    padding: .8rem 0;
+  }
+  .dia-pista { grid-column: 1 / -1; order: 3; }
+  .dia-horas { text-align: right; }
+}
+
+@media (max-width: 660px) {
+  :root { --nav-h: 4rem; }
+  /* un solo paño: se quita la linea vertical y quedan 3 prendas */
+  .hero {
+    --barra-y: clamp(4.5rem, 12vh, 7rem);
+    --pw: clamp(66px, 21vw, 106px);
+  }
+  .hero-panos i { display: none; }
+  .percha:nth-child(1) { left: 22%; }
+  .percha:nth-child(2) { left: 50%; }
+  .percha:nth-child(3) { left: 78%; }
+  .hero-contenido { width: auto; margin: 0; padding-inline: clamp(1rem, 4vw, 2rem); }
+  .hero-entrar { left: 50%; }
+  .hero-barra::before, .hero-barra::after { display: none; }
+  .hero-botones .btn { width: 100%; }
+  .galeria {
+    grid-template-columns: 1fr;
+    grid-auto-rows: clamp(230px, 62vw, 340px);
+  }
+  .hueco-ancho { grid-column: auto; }
+  .insta-rejilla { grid-template-columns: repeat(2, 1fr); }
+  .etiqueta { width: 100px; }
+  .etiqueta svg { width: 100px; height: 74px; }
+  .cookie-banner:not([hidden]) { flex-direction: column; align-items: stretch; text-align: left; }
+}
+
+@media (max-width: 420px) {
+  .hero { --pw: clamp(64px, 20vw, 92px); }
+  .prenda { width: min(78vw, 250px); }
+  .pano-dentro { padding: 1.35rem 1.1rem; }
+}
+
+/* ===============================================================
+   Movimiento reducido: todo colocado, nada en marcha
+   =============================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquesina-pista { animation: none !important; transform: none !important; }
+  .percha, .prenda { transform: none !important; }
+  .pano-marco i { transform: none !important; }
+  .prenda-foto img { transition: none; }
+}

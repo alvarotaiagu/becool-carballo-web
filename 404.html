@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada · BeCool</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/brand/becool-icono.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Manrope:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .perdido {
+    min-height: 100svh;
+    background: var(--lino);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .perdido-marco { position: absolute; inset: 0; box-shadow: inset 0 0 0 var(--marco-px) var(--marco); pointer-events: none; }
+  .perdido-barra { position: absolute; left: 0; right: 0; top: 18vh; height: 9px; background: var(--marco); }
+  .perdido-percha { position: absolute; top: calc(18vh + 4.5px - 130px * .08); left: 50%; width: 130px; height: auto; margin-left: -65px; }
+  .perdido-caja { position: relative; z-index: 2; margin-top: 18vh; }
+  .perdido h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1; color: var(--tinta); margin: 0 0 1rem; }
+  .perdido p { margin: 0 0 2rem; }
+</style>
+</head>
+<body>
+<main class="perdido">
+  <div class="perdido-barra" aria-hidden="true"></div>
+  <img class="perdido-percha" src="assets/img/prendas/percha-vacia.svg" alt="" aria-hidden="true" width="200" height="104">
+  <div class="perdido-caja">
+    <h1>Esta percha está vacía</h1>
+    <p>La página que buscabas no está aquí. Lo que sí está, está en el escaparate.</p>
+    <a class="btn btn-acento" href="./">Volver a BeCool</a>
+  </div>
+  <div class="perdido-marco" aria-hidden="true"></div>
+</main>
+</body>
+</html>

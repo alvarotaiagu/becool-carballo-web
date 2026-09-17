@@ -1,0 +1,267 @@
+{
+  "fecha": "2026-09-17T16:36:57.515Z",
+  "total": 52,
+  "fallos": 0,
+  "resultados": [
+    {
+      "prueba": "sin errores de JavaScript",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "el mapa no se carga solo",
+      "ok": true,
+      "detalle": "1 peticiones a google (fuentes)"
+    },
+    {
+      "prueba": "no hay iframe antes del consentimiento",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "el aviso de cookies aparece",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "el boton del aviso lo cierra",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "un solo h1",
+      "ok": true,
+      "detalle": "h1=1"
+    },
+    {
+      "prueba": "todas las imagenes con alt",
+      "ok": true,
+      "detalle": "0 sin alt"
+    },
+    {
+      "prueba": "sin id repetidos",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "sin anclas rotas",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "idioma declarado",
+      "ok": true,
+      "detalle": "es"
+    },
+    {
+      "prueba": "las perchas cuelgan de la barra",
+      "ok": true,
+      "detalle": "desvio maximo 0.0px en 6 prendas"
+    },
+    {
+      "prueba": "el vinilo no cruza el marco",
+      "ok": true,
+      "detalle": "0 paños cruzados"
+    },
+    {
+      "prueba": "el recorrido empieza a cero",
+      "ok": true,
+      "detalle": "scaleX(0)"
+    },
+    {
+      "prueba": "el recorrido llega al final",
+      "ok": true,
+      "detalle": "scaleX(1)"
+    },
+    {
+      "prueba": "los marcos se dibujan enteros",
+      "ok": true,
+      "detalle": "0 de 68 sin dibujar"
+    },
+    {
+      "prueba": "el contador llega a 10",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "la escala horaria cae sobre las barras",
+      "ok": true,
+      "detalle": "marca de las 14 a 0.0px del fin del tramo del sabado"
+    },
+    {
+      "prueba": "el mapa carga al pulsar",
+      "ok": true,
+      "detalle": "https://www.google.com/maps?q=BeCool+R%C3%BAa+H%C3%B3rreo+14+15100+Carballo+A+Coru%C3%B1a&output=embed"
+    },
+    {
+      "prueba": "el carrusel se arrastra",
+      "ok": true,
+      "detalle": "scrollLeft=776"
+    },
+    {
+      "prueba": "el cambio a rejilla funciona",
+      "ok": true,
+      "detalle": "grid"
+    },
+    {
+      "prueba": "sin desborde horizontal a 1680px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 1440px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 1100px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 900px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 700px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 500px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "sin desborde horizontal a 400px",
+      "ok": true,
+      "detalle": "sobran 0px · saltar"
+    },
+    {
+      "prueba": "con la hoja configurada se pide la hoja",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "con la hoja caida siguen los 6 ejemplos",
+      "ok": true,
+      "detalle": "6 prendas"
+    },
+    {
+      "prueba": "con la hoja caida siguen marcados como ejemplo",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "con la hoja caida no salta ningun error",
+      "ok": true,
+      "detalle": "console: Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "prueba": "la hoja sustituye las prendas",
+      "ok": true,
+      "detalle": "2 prendas"
+    },
+    {
+      "prueba": "se pintan los datos de la hoja",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "se quita el aviso de ejemplo",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "se mantiene el aviso del WhatsApp pendiente",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "el enlace de Drive se convierte en miniatura",
+      "ok": true,
+      "detalle": "https://drive.google.com/thumbnail?id=1AbCdEfGhIjKlMnOpQrStUvWxYz12345&sz=w1200"
+    },
+    {
+      "prueba": "cada prenda enlaza a su post de Instagram",
+      "ok": true,
+      "detalle": "https://www.instagram.com/becoolcarballo/"
+    },
+    {
+      "prueba": "movimiento reducido: no se anima",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "movimiento reducido: las prendas ya estan colgadas",
+      "ok": true,
+      "detalle": "0 fuera de pantalla"
+    },
+    {
+      "prueba": "movimiento reducido: los marcos ya estan dibujados",
+      "ok": true,
+      "detalle": "0 sin dibujar"
+    },
+    {
+      "prueba": "movimiento reducido: el contador sigue dando 10",
+      "ok": true,
+      "detalle": "10"
+    },
+    {
+      "prueba": "movimiento reducido: el horario sigue diciendo si esta abierto",
+      "ok": true,
+      "detalle": "Abierto ahora"
+    },
+    {
+      "prueba": "movimiento reducido: el horario sigue marcando hoy",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "movimiento reducido: el recorrido sigue funcionando",
+      "ok": true,
+      "detalle": "scaleX(0)"
+    },
+    {
+      "prueba": "sin GSAP: se marca la pagina",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "sin GSAP: los marcos se ven",
+      "ok": true,
+      "detalle": "0 sin dibujar"
+    },
+    {
+      "prueba": "sin GSAP: las prendas se ven",
+      "ok": true,
+      "detalle": "0 fuera de pantalla"
+    },
+    {
+      "prueba": "sin GSAP: los titulares se leen",
+      "ok": true,
+      "detalle": "Recién colgado"
+    },
+    {
+      "prueba": "sin GSAP: el contador se pone",
+      "ok": true,
+      "detalle": "10"
+    },
+    {
+      "prueba": "sin GSAP: sin errores",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "el aviso no vuelve tras aceptarlo",
+      "ok": true,
+      "detalle": ""
+    },
+    {
+      "prueba": "la 404 se pinta",
+      "ok": true,
+      "detalle": ""
+    }
+  ]
+}

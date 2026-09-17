@@ -1,0 +1,14 @@
+<!-- BeCool · prenda del escaparate: falda plisada en percha de pinzas. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 470" role="img" aria-label="Falda plisada colgada de una percha de pinzas">
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100,46 C100,32 89,30 89,19 C89,10 96,5 102,5 C110,5 115,11 115,20"/>
+    <path d="M100,46 L100,86 M52,86 L148,86"/>
+  </g>
+  <g fill="#111111"><rect x="58" y="82" width="16" height="22" rx="3"/><rect x="126" y="82" width="16" height="22" rx="3"/></g>
+  <path fill="#B9AE9D" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+        d="M62,100 L138,100 L140,124 L166,290 C167,296 163,300 157,300 L43,300 C37,300 33,296 34,290 L60,124 Z"/>
+  <path fill="none" stroke="#111111" stroke-width="2.5" d="M60,124 L140,124"/>
+  <g fill="none" stroke="#8E8474" stroke-width="2.2" stroke-linecap="round">
+    <path d="M76,128 L58,294 M88,128 L79,294 M100,128 L100,294 M112,128 L121,294 M124,128 L142,294"/>
+  </g>
+</svg>

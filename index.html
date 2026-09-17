@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeCool · Ropa, calzado y complementos en Carballo</title>
+<meta name="description" content="BeCool · Clothing, shoes &amp; more. Tienda de ropa de mujer en Rúa Hórreo, 14, Carballo (A Coruña). Ropa, calzado y complementos. 4,6 ★ con 10 reseñas. Abrimos también los domingos por la mañana.">
+<link rel="canonical" href="https://alvarotaiagu.github.io/becool-carballo-web/">
+<link rel="icon" href="assets/img/brand/becool-icono.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light only">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="BeCool">
+<meta property="og:title" content="BeCool · Ropa, calzado y complementos en Carballo">
+<meta property="og:description" content="Rúa Hórreo, 14, Carballo. Ropa de mujer, calzado y complementos. Abrimos domingos de 10:30 a 14:00.">
+<meta property="og:url" content="https://alvarotaiagu.github.io/becool-carballo-web/">
+<meta property="og:image" content="https://alvarotaiagu.github.io/becool-carballo-web/assets/img/og-becool.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Datos estructurados: SOLO lo confirmado por la ficha de Google.
+     No hay telefono visible en la ficha, asi que no se declara ninguno:
+     antes vacio que inventado. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "BeCool",
+  "alternateName": "BeCool · Clothing, shoes & more",
+  "url": "https://alvarotaiagu.github.io/becool-carballo-web/",
+  "image": "https://alvarotaiagu.github.io/becool-carballo-web/assets/img/og-becool.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rúa Hórreo, 14, bajo",
+    "addressLocality": "Carballo",
+    "addressRegion": "A Coruña",
+    "postalCode": "15100",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://www.facebook.com/p/BeCool-Carballo-100078480740801/",
+    "https://www.instagram.com/becoolcarballo/"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.6",
+    "reviewCount": "10",
+    "bestRating": "5"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:30", "closes": "13:45" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "20:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "10:30", "closes": "14:00" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1">
+
+<!-- ==================================================================
+     NOVEDADES · "Recién colgado" desde una hoja de cálculo
+     ==================================================================
+     Esta es la unica parte de la web pensada para cambiar cada semana,
+     y se cambia SIN tocar codigo: se edita una hoja de Google y la web
+     la lee sola. Instrucciones paso a paso en README.md.
+
+     Resumen:
+     1. Crear una hoja de calculo en Google con una pestaña llamada
+        "Novedades" y esta primera fila de cabeceras, en este orden:
+
+          nombre | categoria | precio | tallas | foto | instagram
+
+        - nombre    : Vestido midi de punto
+        - categoria : ropa | calzado | complemento   (en minusculas)
+        - precio    : 39 €        (texto libre, se pinta tal cual)
+        - tallas    : S · M · L   (texto libre)
+        - foto      : URL publica de la imagen (Drive compartido
+                      "cualquiera con el enlace", Instagram, Imgur...)
+        - instagram : URL del post de Instagram de esa prenda
+
+     2. Archivo -> Compartir -> Publicar en la web.
+     3. Copiar el ID de la hoja desde su URL:
+          docs.google.com/spreadsheets/d/ ESTO_ES_EL_ID /edit
+     4. Pegarlo abajo en "id". Nada mas.
+
+     Mientras "id" siga con el valor PENDIENTE, la web no hace ninguna
+     peticion y se queda con las 6 prendas de ejemplo de mas abajo.
+     Si la hoja falla (sin red, mal compartida, borrada), tambien se
+     queda con los ejemplos y no se muestra ningun error: la tienda no
+     puede quedarse con un hueco roto en pantalla.
+     ================================================================== -->
+<script>
+  window.BECOOL_NOVEDADES = {
+    id: "ID-DE-LA-HOJA-PENDIENTE",
+    hoja: "Novedades"
+  };
+</script>
+</head>
+<body>
+
+<a class="saltar" href="#novedades">Saltar al contenido</a>
+
+<!-- Cuanto llevas recorrido de la pagina, en el idioma de la casa: una
+     barra de colgar y una percha que la recorre de punta a punta. -->
+<div class="progreso" aria-hidden="true">
+  <i class="progreso-recorrido"></i>
+  <svg class="progreso-percha" viewBox="0 0 28 18">
+    <g fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14,6 V4.2 A2.4,2.4 0 1 1 16.6,2.6"/>
+      <path d="M14,6 4,15 H24 Z"/>
+    </g>
+  </svg>
+</div>
+
+<header class="barra-nav" id="barra-nav">
+  <div class="barra-nav-interior">
+    <a class="marca" href="#inicio" aria-label="BeCool, inicio">
+      <img class="marca-script" src="assets/img/brand/becool-script.svg" alt="BeCool" width="1012" height="539">
+      <span class="marca-lema">Clothing, shoes &amp; more</span>
+    </a>
+    <nav class="nav-enlaces" aria-label="Principal">
+      <a href="#novedades">Recién colgado</a>
+      <a href="#encontraras">Qué encontrarás</a>
+      <a href="#dentro">Dentro</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-acento btn-nav magnetico" href="#contacto">Cómo llegar</a>
+    <button class="nav-boton" type="button" aria-expanded="false" aria-controls="nav-movil">
+      <span class="nav-boton-lineas" aria-hidden="true"><i></i><i></i></span>
+      <span class="sr">Abrir menú</span>
+    </button>
+  </div>
+  <nav class="nav-movil" id="nav-movil" aria-label="Principal (móvil)" hidden>
+    <a href="#novedades">Recién colgado</a>
+    <a href="#encontraras">Qué encontrarás</a>
+    <a href="#dentro">Dentro de la tienda</a>
+    <a href="#horario">Cuándo venir</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO · EL ESCAPARATE ============ -->
+<section class="hero" id="inicio">
+
+  <!-- el interior de la tienda: pared de lino, barra de colgar y prendas -->
+  <div class="hero-interior">
+    <div class="hero-barra" aria-hidden="true"></div>
+    <ul class="hero-perchas">
+      <li class="percha" style="--n:0"><img src="assets/img/prendas/abrigo.svg" alt="Abrigo colgado" width="200" height="470"></li>
+      <li class="percha" style="--n:1"><img src="assets/img/prendas/blusa.svg" alt="Blusa colgada" width="200" height="470"></li>
+      <li class="percha" style="--n:2"><img src="assets/img/prendas/vestido.svg" alt="Vestido colgado" width="200" height="470"></li>
+      <li class="percha" style="--n:3"><img src="assets/img/prendas/falda.svg" alt="Falda colgada" width="200" height="470"></li>
+      <li class="percha" style="--n:4"><img src="assets/img/prendas/jersey.svg" alt="Jersey de punto colgado" width="200" height="470"></li>
+      <li class="percha" style="--n:5"><img src="assets/img/prendas/pantalon.svg" alt="Pantalón colgado" width="200" height="470"></li>
+    </ul>
+  </div>
+
+  <!-- el cristal: reflejo estatico (gradiente, nunca canvas) y paños -->
+  <div class="hero-cristal" aria-hidden="true">
+    <div class="hero-reflejo"></div>
+    <div class="hero-panos"><i></i><i></i></div>
+  </div>
+
+  <div class="hero-contenido">
+    <h1 class="hero-vinilo">
+      <img class="vinilo-script" src="assets/img/brand/becool-script.svg" alt="BeCool" width="1012" height="539">
+      <span class="vinilo-lema">Clothing, shoes &amp; more</span>
+    </h1>
+    <p class="hero-linea">Ropa, calzado y complementos<br>Carballo · <b>abrimos domingos</b></p>
+    <p class="hero-insignia">
+      <span class="estrellas" aria-hidden="true">★★★★★</span>
+      <span><b>4,6</b> · 10 reseñas en Google</span>
+    </p>
+    <div class="hero-botones">
+      <a class="btn btn-acento magnetico" href="#novedades">Ver novedades</a>
+      <a class="btn btn-linea magnetico" href="#contacto">Cómo llegar</a>
+    </div>
+  </div>
+
+  <a class="hero-entrar" href="#novedades">
+    <span>entra</span>
+    <i aria-hidden="true"></i>
+  </a>
+</section>
+
+<!-- ============ BARRA MARQUESINA ============ -->
+<div class="marquesina" aria-hidden="true">
+  <div class="marquesina-pista">
+    <span>ropa · calzado · complementos · domingos abierto · Rúa Hórreo 14 · </span>
+    <span>ropa · calzado · complementos · domingos abierto · Rúa Hórreo 14 · </span>
+    <span>ropa · calzado · complementos · domingos abierto · Rúa Hórreo 14 · </span>
+    <span>ropa · calzado · complementos · domingos abierto · Rúa Hórreo 14 · </span>
+  </div>
+</div>
+
+<!-- ============ RECIÉN COLGADO ============ -->
+<section class="seccion novedades" id="novedades">
+  <div class="pano" data-pano>
+    <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="pano-dentro">
+
+      <header class="cabecera">
+        <p class="rotulo">Novedades de la semana</p>
+        <h2 class="titular" data-split-char>Recién colgado</h2>
+        <p class="entradilla">Lo que ha entrado estos días y ya está en la barra. Se ve, se prueba y se compra en la tienda; sin carrito ni envíos.</p>
+      </header>
+
+      <div class="novedades-mandos">
+        <div class="vistas" role="group" aria-label="Forma de ver las novedades">
+          <button type="button" class="vista-btn activa" data-vista="carrusel" aria-pressed="true">Barra</button>
+          <button type="button" class="vista-btn" data-vista="rejilla" aria-pressed="false">Rejilla</button>
+        </div>
+        <p class="novedades-pista" data-pista-arrastre>Arrastra la barra para ver más →</p>
+      </div>
+
+      <!-- La barra de colgar de la que cuelgan las tarjetas -->
+      <div class="colgador" data-vista-actual="carrusel">
+        <div class="colgador-barra" aria-hidden="true"></div>
+        <ul class="colgador-lista" id="lista-novedades" tabindex="0" aria-label="Prendas recién llegadas">
+          <!-- ===== 6 prendas de EJEMPLO =====
+               Se pintan primero y se quedan si la hoja no responde.
+               Al conectar la hoja, main.js sustituye toda esta lista. -->
+          <li class="prenda" style="--n:0">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto>
+                <span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span>
+              </span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Ropa</span>
+                <span class="prenda-nombre">Vestido midi de punto</span>
+                <span class="prenda-tallas">TALLA S · M · L</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>39 €</b>
+              </span>
+              <span class="sr">39 €</span>
+            </a>
+          </li>
+          <li class="prenda" style="--n:1">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto><span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span></span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Calzado</span>
+                <span class="prenda-nombre">Botín de tacón bajo</span>
+                <span class="prenda-tallas">TALLA 36 · 37 · 39</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>59 €</b>
+              </span>
+              <span class="sr">59 €</span>
+            </a>
+          </li>
+          <li class="prenda" style="--n:2">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto><span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span></span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Complemento</span>
+                <span class="prenda-nombre">Bolso pequeño de piel</span>
+                <span class="prenda-tallas">TALLA ÚNICA</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>29 €</b>
+              </span>
+              <span class="sr">29 €</span>
+            </a>
+          </li>
+          <li class="prenda" style="--n:3">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto><span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span></span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Ropa</span>
+                <span class="prenda-nombre">Camisa de lino</span>
+                <span class="prenda-tallas">TALLA M · L</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>35 €</b>
+              </span>
+              <span class="sr">35 €</span>
+            </a>
+          </li>
+          <li class="prenda" style="--n:4">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto><span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span></span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Ropa</span>
+                <span class="prenda-nombre">Pantalón ancho</span>
+                <span class="prenda-tallas">TALLA 38 · 40 · 42</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>42 €</b>
+              </span>
+              <span class="sr">42 €</span>
+            </a>
+          </li>
+          <li class="prenda" style="--n:5">
+            <a class="prenda-caja" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">
+              <span class="prenda-gancho" aria-hidden="true"></span>
+              <span class="prenda-foto" data-sin-foto><span class="prenda-vacio">[EJEMPLO — SUSTITUIR]</span></span>
+              <span class="prenda-datos">
+                <span class="prenda-cat">Complemento</span>
+                <span class="prenda-nombre">Pendientes de aro</span>
+                <span class="prenda-tallas">TALLA ÚNICA</span>
+              </span>
+              <span class="etiqueta" aria-hidden="true">
+                <svg viewBox="0 0 116 86" width="116" height="86"><path d="M38,0 V52" stroke="#111" stroke-width="1.5" fill="none"/><path d="M14,56 L32,34 H108 a4,4 0 0 1 4,4 V74 a4,4 0 0 1 -4,4 H32 Z" fill="var(--acento)"/><circle cx="38" cy="56" r="5.5" fill="#FFF"/></svg>
+                <b>15 €</b>
+              </span>
+              <span class="sr">15 €</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <p class="nota-pendiente" data-aviso-ejemplo>
+        <b>[EJEMPLO — SUSTITUIR]</b> Las seis prendas de arriba son de muestra: nombres,
+        precios y tallas están puestos para enseñar cómo se ve la sección, no son producto
+        real de la tienda. En cuanto se conecte la hoja de novedades, se sustituyen solas.
+      </p>
+      <p class="nota-pendiente">
+        Reserva por WhatsApp: <b>[WHATSAPP PENDIENTE]</b> — hace falta confirmar si se reservan
+        prendas por WhatsApp y con qué número.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ ENCONTRARÁS ============ -->
+<section class="seccion encontraras" id="encontraras">
+  <header class="cabecera cabecera-centro">
+    <p class="rotulo">Tres paños</p>
+    <h2 class="titular" data-split-char>Qué encontrarás</h2>
+    <p class="entradilla">Lo que dice el propio rótulo de la tienda: <i>clothing, shoes &amp; more</i>. Ni una categoría más de las que hay confirmadas.</p>
+  </header>
+
+  <ul class="panos-tres">
+    <li class="pano pano-cat" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <span class="pano-num">01</span>
+        <svg class="pano-icono" viewBox="0 0 120 120" aria-hidden="true">
+          <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60,26 C60,21 55,20 55,15 A4.5,4.5 0 1 1 63,17.5"/>
+            <path d="M60,26 26,47 H94 Z"/>
+          </g>
+          <path fill="#1A1A1A" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+                d="M46,44 C40,47 36,54 34,64 L31,78 C30,82 33,84 36,83 L42,81 L37,105 C36,109 38,111 42,111 L78,111 C82,111 84,109 83,105 L78,81 L84,83 C87,84 90,82 89,78 L86,64 C84,54 80,47 74,44 C70,50 65,53 60,53 C55,53 50,50 46,44 Z"/>
+          <rect x="41" y="75" width="38" height="6" rx="1.5" fill="var(--acento, #C46A4A)"/>
+        </svg>
+        <h3>Ropa</h3>
+        <p class="pano-en">Clothing</p>
+        <p>Ropa de mujer, que es la categoría con la que la tienda figura en Google. Lo que entra cada semana se ve en <a href="#novedades">Recién colgado</a>.</p>
+        <p class="pendiente">[CONFIRMAR CATEGORÍAS Y MARCAS]</p>
+      </div>
+    </li>
+    <li class="pano pano-cat" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <span class="pano-num">02</span>
+        <svg class="pano-icono" viewBox="0 0 120 120" aria-hidden="true">
+          <path fill="#1A1A1A" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+                d="M40,24 H54 c3,0 5,2 5,5 v23 c0,9 6,15 16,19 8,3 12,6 13,11 .5,3 -1.5,5 -5,5 H42 c-3,0 -5,-2 -5,-5 V29 c0,-3 1,-5 3,-5 Z"/>
+          <rect x="33" y="86" width="60" height="8" rx="2.5" fill="#111111"/>
+          <path d="M46,34 C49,44 54,50 62,53" fill="none" stroke="#5A5A5A" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Calzado</h3>
+        <p class="pano-en">Shoes</p>
+        <p>Zapato y botín para acompañar lo que ya cuelga de la barra. Se prueba en tienda, que para eso está.</p>
+        <p class="pendiente">[CONFIRMAR CATEGORÍAS Y MARCAS]</p>
+      </div>
+    </li>
+    <li class="pano pano-cat" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <span class="pano-num">03</span>
+        <svg class="pano-icono" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M44,52 C44,42 51,34 60,34 C69,34 76,42 76,52" fill="none" stroke="#111111" stroke-width="3"/>
+          <rect x="26" y="50" width="68" height="46" rx="5" fill="#D8CFC2" stroke="#111111" stroke-width="2.5"/>
+          <rect x="26" y="50" width="68" height="12" rx="5" fill="#C4B9A7" stroke="#111111" stroke-width="2.5"/>
+          <circle cx="60" cy="76" r="5.5" fill="var(--acento, #C46A4A)"/>
+        </svg>
+        <h3>Complementos</h3>
+        <p class="pano-en">&amp; more</p>
+        <p>El «&amp; more» del rótulo: bolso, pendientes, lo pequeño que cambia un conjunto entero.</p>
+        <p class="pendiente">[CONFIRMAR CATEGORÍAS Y MARCAS]</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ DENTRO DE LA TIENDA ============ -->
+<section class="seccion dentro" id="dentro">
+  <header class="cabecera">
+    <p class="rotulo">Rúa Hórreo, 14</p>
+    <h2 class="titular" data-split-char>Dentro de la tienda</h2>
+    <p class="entradilla">La cristalera grande de marco negro, las prendas colgadas a la vista y el interior claro. Seis huecos esperando las fotos reales de la tienda.</p>
+  </header>
+
+  <ul class="galeria">
+    <li class="hueco hueco-alto" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/escaparate-900.jpg" srcset="assets/img/photos/escaparate-640.jpg 640w, assets/img/photos/escaparate-900.jpg 900w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 46vw, 23vw" alt="Prendas colgadas vistas a través del cristal de un escaparate" width="900" height="1200" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> El escaparate desde la calle</figcaption>
+      </figure>
+    </li>
+    <li class="hueco" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/barra-900.jpg" srcset="assets/img/photos/barra-560.jpg 560w, assets/img/photos/barra-900.jpg 900w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 46vw, 23vw" alt="Perchas de madera colgadas de una barra sobre pared clara" width="900" height="675" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> La barra de colgar</figcaption>
+      </figure>
+    </li>
+    <li class="hueco" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/espejo-900.jpg" srcset="assets/img/photos/espejo-560.jpg 560w, assets/img/photos/espejo-900.jpg 900w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 46vw, 23vw" alt="Espejo de cuerpo entero que refleja un rincón claro de tienda" width="900" height="675" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> El rincón del espejo</figcaption>
+      </figure>
+    </li>
+    <li class="hueco" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/punto-900.jpg" srcset="assets/img/photos/punto-560.jpg 560w, assets/img/photos/punto-900.jpg 900w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 46vw, 23vw" alt="Detalle de tejido de punto con luz lateral" width="900" height="675" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> Detalle de punto</figcaption>
+      </figure>
+    </li>
+    <li class="hueco" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/calzado-900.jpg" srcset="assets/img/photos/calzado-560.jpg 560w, assets/img/photos/calzado-900.jpg 900w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 46vw, 23vw" alt="Calzado de mujer sobre una superficie clara" width="900" height="675" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> Calzado</figcaption>
+      </figure>
+    </li>
+    <li class="hueco hueco-ancho" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <figure>
+        <img src="assets/img/photos/cristal-1200.jpg" srcset="assets/img/photos/cristal-700.jpg 700w, assets/img/photos/cristal-1200.jpg 1200w" sizes="(max-width: 620px) 92vw, (max-width: 1100px) 92vw, 46vw" alt="Prendas colgadas de una barra contra una pared clara" width="1200" height="900" loading="lazy" decoding="async">
+        <figcaption><span class="marca-foto">Imagen de archivo</span> Todo cuelga, todo se ve</figcaption>
+      </figure>
+    </li>
+  </ul>
+
+  <p class="nota-pendiente">
+    Las seis fotografías son <b>imágenes de archivo</b> elegidas para enseñar el aire de la
+    sección: <b>no son la tienda</b>. Están pensadas para sustituirse por fotos reales del
+    escaparate y del interior de Rúa Hórreo, 14. <b>[FOTOS REALES PENDIENTES]</b>
+  </p>
+</section>
+
+<!-- ============ CUÁNDO VENIR ============ -->
+<section class="seccion horario" id="horario">
+  <div class="pano" data-pano>
+    <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="pano-dentro">
+      <header class="cabecera">
+        <p class="rotulo">Horario</p>
+        <h2 class="titular" data-split-char>Cuándo venir</h2>
+        <p class="entradilla">Y sí: <b>los domingos por la mañana también</b>, que en Carballo no es lo común.</p>
+      </header>
+
+      <p class="estado-ahora" data-estado hidden></p>
+
+      <div class="franjas" data-franjas>
+        <div class="franjas-escala" aria-hidden="true">
+          <span style="--h:10">10</span><span style="--h:12">12</span><span style="--h:14">14</span>
+          <span style="--h:16">16</span><span style="--h:18">18</span><span style="--h:20">20</span>
+        </div>
+        <ul class="franjas-dias">
+          <li class="dia" data-dia="1"><span class="dia-nombre">Lunes</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:13.75"></i><i class="tramo" style="--desde:17;--hasta:20.5"></i></span><span class="dia-horas">10:30–13:45 · 17:00–20:30</span></li>
+          <li class="dia" data-dia="2"><span class="dia-nombre">Martes</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:13.75"></i><i class="tramo" style="--desde:17;--hasta:20.5"></i></span><span class="dia-horas">10:30–13:45 · 17:00–20:30</span></li>
+          <li class="dia" data-dia="3"><span class="dia-nombre">Miércoles</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:13.75"></i><i class="tramo" style="--desde:17;--hasta:20.5"></i></span><span class="dia-horas">10:30–13:45 · 17:00–20:30</span></li>
+          <li class="dia" data-dia="4"><span class="dia-nombre">Jueves</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:13.75"></i><i class="tramo" style="--desde:17;--hasta:20.5"></i></span><span class="dia-horas">10:30–13:45 · 17:00–20:30</span></li>
+          <li class="dia" data-dia="5"><span class="dia-nombre">Viernes</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:13.75"></i><i class="tramo" style="--desde:17;--hasta:20.5"></i></span><span class="dia-horas">10:30–13:45 · 17:00–20:30</span></li>
+          <li class="dia" data-dia="6"><span class="dia-nombre">Sábado</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:14"></i></span><span class="dia-horas">10:30–14:00</span></li>
+          <li class="dia dia-domingo" data-dia="0"><span class="dia-nombre">Domingo</span><span class="dia-pista" aria-hidden="true"><i class="tramo" style="--desde:10.5;--hasta:14"></i></span><span class="dia-horas">10:30–14:00</span></li>
+        </ul>
+      </div>
+
+      <p class="horario-remate">Mañanas de domingo: <b>10:30 a 14:00</b>. La barra está puesta igual que el resto de la semana.</p>
+      <p class="nota-pendiente">Horario según la ficha de Google. Festivos y cierres por vacaciones: <b>[HORARIO ESPECIAL PENDIENTE]</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section class="seccion resenas" id="resenas">
+  <header class="cabecera cabecera-centro">
+    <p class="rotulo">Google</p>
+    <h2 class="titular" data-split-char>Lo que dicen</h2>
+  </header>
+
+  <div class="nota-grande">
+    <p class="nota-cifra"><b>4,6</b> <span class="nota-estrellas" aria-hidden="true">★</span></p>
+    <p class="nota-texto">sobre <b data-contador-num="10">0</b> reseñas en Google</p>
+  </div>
+
+  <ul class="resenas-lista">
+    <li class="pano pano-resena" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <p class="resena-estrellas" aria-hidden="true">★★★★★</p>
+        <blockquote><p>[TEXTO DE RESEÑA PENDIENTE]</p></blockquote>
+        <p class="resena-firma">[NOMBRE PENDIENTE] · Google</p>
+      </div>
+    </li>
+    <li class="pano pano-resena" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <p class="resena-estrellas" aria-hidden="true">★★★★★</p>
+        <blockquote><p>[TEXTO DE RESEÑA PENDIENTE]</p></blockquote>
+        <p class="resena-firma">[NOMBRE PENDIENTE] · Google</p>
+      </div>
+    </li>
+    <li class="pano pano-resena" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <p class="resena-estrellas" aria-hidden="true">★★★★★</p>
+        <blockquote><p>[TEXTO DE RESEÑA PENDIENTE]</p></blockquote>
+        <p class="resena-firma">[NOMBRE PENDIENTE] · Google</p>
+      </div>
+    </li>
+  </ul>
+
+  <p class="nota-pendiente">
+    La nota <b>4,6 ★ sobre 10 reseñas</b> es el dato real de la ficha de Google.
+    Los tres textos de arriba son huecos: no se ha copiado ninguna reseña porque no
+    tenemos los textos ni los nombres. <b>[TEXTOS DE RESEÑA PENDIENTES]</b>
+  </p>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="seccion insta" id="instagram">
+  <div class="pano" data-pano>
+    <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="pano-dentro">
+      <header class="cabecera">
+        <p class="rotulo">Instagram</p>
+        <h2 class="titular" data-split-char>@becoolcarballo</h2>
+        <p class="entradilla">Ahí se cuelga lo que va llegando, día a día. Seis huecos para las últimas fotos del perfil.</p>
+      </header>
+
+      <ul class="insta-rejilla">
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 1]</span></a></li>
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 2]</span></a></li>
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 3]</span></a></li>
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 4]</span></a></li>
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 5]</span></a></li>
+        <li><a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener"><span class="insta-hueco">[FOTO IG 6]</span></a></li>
+      </ul>
+
+      <p class="insta-pie">
+        <a class="btn btn-linea magnetico" href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">Ver el perfil</a>
+        <a class="btn btn-linea magnetico" href="https://www.facebook.com/p/BeCool-Carballo-100078480740801/" target="_blank" rel="noopener">Facebook</a>
+      </p>
+      <p class="nota-pendiente">
+        Los seis huecos se rellenan a mano con las fotos que elija la tienda; no se usa
+        la API de Instagram, así la web no depende de ningún permiso ni carga nada de
+        terceros sin pedirlo. <b>[FOTOS DE INSTAGRAM PENDIENTES]</b>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="seccion contacto" id="contacto">
+  <header class="cabecera">
+    <p class="rotulo">Carballo · A Coruña</p>
+    <h2 class="titular" data-split-char>Pasa por la tienda</h2>
+  </header>
+
+  <div class="contacto-reja">
+    <div class="pano pano-datos" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <dl class="datos">
+          <dt>Dirección</dt>
+          <dd>
+            <a href="https://www.google.com/maps?q=BeCool+R%C3%BAa+H%C3%B3rreo+14+Carballo" target="_blank" rel="noopener">
+              Rúa Hórreo, 14, bajo<br>15100 Carballo (A Coruña)
+            </a>
+          </dd>
+
+          <dt>Teléfono</dt>
+          <dd class="pendiente">[TELÉFONO PENDIENTE]</dd>
+
+          <dt>WhatsApp</dt>
+          <dd class="pendiente">[WHATSAPP PENDIENTE]</dd>
+
+          <dt>Correo</dt>
+          <dd class="pendiente">[EMAIL PENDIENTE]</dd>
+
+          <dt>Horario</dt>
+          <dd>
+            Lunes a viernes 10:30–13:45 y 17:00–20:30<br>
+            Sábado y domingo 10:30–14:00
+          </dd>
+
+          <dt>Redes</dt>
+          <dd>
+            <a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/p/BeCool-Carballo-100078480740801/" target="_blank" rel="noopener">Facebook</a>
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="pano pano-mapa" data-pano>
+      <span class="pano-marco" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <div class="pano-dentro">
+        <!-- Mapa con consentimiento: el iframe de Google no existe hasta
+             que se pulsa. Coherente con el aviso "sin cookies de terceros". -->
+        <div class="map-consent" data-mapa
+             data-src="https://www.google.com/maps?q=BeCool+R%C3%BAa+H%C3%B3rreo+14+15100+Carballo+A+Coru%C3%B1a&output=embed">
+          <p>El mapa es de Google y carga cookies suyas. Se abre solo si lo pides tú.</p>
+          <button type="button" class="btn btn-acento magnetico">Ver el mapa</button>
+          <p class="map-alt"><a href="https://www.google.com/maps?q=BeCool+R%C3%BAa+H%C3%B3rreo+14+15100+Carballo+A+Coru%C3%B1a" target="_blank" rel="noopener">o abrirlo en Google Maps</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="nota-pendiente">
+    En la ficha de Google de la tienda <b>no aparece teléfono</b>, así que aquí no se
+    publica ninguno. En cuanto lo facilite la tienda se pone, y con él el botón de llamar
+    y, si se reservan prendas por WhatsApp, el de WhatsApp.
+  </p>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="pie-interior">
+    <a class="marca marca-pie" href="#inicio" aria-label="BeCool, inicio">
+      <img class="marca-script" src="assets/img/brand/becool-script.svg" alt="BeCool" width="1012" height="539">
+      <span class="marca-lema">Clothing, shoes &amp; more</span>
+    </a>
+    <nav class="pie-nav" aria-label="Pie">
+      <a href="#novedades">Recién colgado</a>
+      <a href="#encontraras">Qué encontrarás</a>
+      <a href="#dentro">Dentro de la tienda</a>
+      <a href="#horario">Cuándo venir</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://www.instagram.com/becoolcarballo/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/p/BeCool-Carballo-100078480740801/" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+    <p class="pie-nota">
+      Maqueta de BeCool · Clothing, shoes &amp; more (Rúa Hórreo, 14, Carballo). El logotipo
+      manuscrito está vectorizado a partir del de la propia tienda. Las fotografías marcadas
+      «imagen de archivo» son de banco y <b>no son esta tienda</b>. Precios, tallas, marcas,
+      teléfono y textos de reseñas están marcados como pendientes: no se ha inventado ninguno.
+      Sitio sin cookies de terceros: el mapa solo se carga si lo pides tú.
+    </p>
+    <p class="pie-legal">BECOOL · RÚA HÓRREO 14 · 15100 CARBALLO · A CORUÑA</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" hidden>
+  <p>Esta web no usa cookies de terceros ni te sigue. El mapa de Google solo se carga si pulsas el botón.</p>
+  <button type="button" class="cookie-ack btn btn-acento">Entendido</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="js/main.js?v=1" defer></script>
+</body>
+</html>

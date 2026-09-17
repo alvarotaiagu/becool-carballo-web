@@ -1,0 +1,16 @@
+<!-- BeCool · prenda del escaparate: jersey de punto, hombro caido y canale en bajo y puños. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 470" role="img" aria-label="Jersey de punto colgado de una percha">
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100,46 C100,32 89,30 89,19 C89,10 96,5 102,5 C110,5 115,11 115,20"/>
+    <path d="M100,46 L38,93 L162,93 Z"/>
+  </g>
+  <path fill="#EDE7DD" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+        d="M70,92 C54,96 44,104 40,118 L20,208 C18,219 25,224 34,221 L56,213 L56,292 C56,299 60,302 67,302 L133,302 C140,302 144,299 144,292 L144,213 L166,221 C175,224 182,219 180,208 L160,118 C156,104 146,96 130,92 C124,106 113,112 100,112 C87,112 76,106 70,92 Z"/>
+  <path fill="none" stroke="#111111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        d="M70,92 C77,105 87,111 100,111 C113,111 123,105 130,92"/>
+  <path fill="none" stroke="#111111" stroke-width="2.4" d="M56,272 L144,272 M21,201 L54,190 M179,201 L146,190"/>
+  <g fill="none" stroke="#C4B9A7" stroke-width="2.2" stroke-linecap="round">
+    <path d="M68,276 L68,298 M80,276 L80,298 M92,276 L92,298 M104,276 L104,298 M116,276 L116,298 M128,276 L128,298"/>
+    <path d="M100,120 L100,264 M84,134 L84,262 M116,134 L116,262"/>
+  </g>
+</svg>

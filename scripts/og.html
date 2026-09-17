@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{width:1200px;height:630px;background:#EDE7DD;font-family:Manrope,sans-serif;overflow:hidden;position:relative}
+  .marco{position:absolute;inset:0;box-shadow:inset 0 0 0 14px #111}
+  .pano{position:absolute;top:0;bottom:0;width:14px;background:#111;left:calc(58% - 7px)}
+  .barra{position:absolute;left:0;right:0;top:96px;height:11px;background:#111}
+  .perchas{position:absolute;left:52px;top:calc(96px - 168px*0.069);display:flex;gap:10px}
+  .perchas img{width:168px;display:block}
+  .texto{position:absolute;right:56px;top:50%;transform:translateY(-50%);width:400px;text-align:center}
+  .texto img{width:300px;margin:0 auto 12px}
+  .lema{font-size:13px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:#111}
+  .linea{margin-top:26px;font-size:15px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:#111;line-height:2}
+  .linea b{font-weight:500;color:#C46A4A}
+  .reflejo{position:absolute;inset:0;background:linear-gradient(116deg,rgba(255,255,255,0) 0 22%,rgba(255,255,255,.07) 22% 31%,rgba(255,255,255,0) 31% 42%,rgba(255,255,255,.05) 42% 47%,rgba(255,255,255,0) 47%)}
+</style></head><body>
+  <div class="barra"></div>
+  <div class="perchas">
+    <img src="../assets/img/prendas/abrigo.svg"><img src="../assets/img/prendas/blusa.svg"><img src="../assets/img/prendas/vestido.svg">
+  </div>
+  <div class="reflejo"></div>
+  <div class="pano"></div>
+  <div class="texto">
+    <img src="../assets/img/brand/becool-script.svg">
+    <p class="lema">Clothing, shoes &amp; more</p>
+    <p class="linea">Rúa Hórreo 14 · Carballo<br><b>Abrimos domingos</b></p>
+  </div>
+  <div class="marco"></div>
+</body></html>

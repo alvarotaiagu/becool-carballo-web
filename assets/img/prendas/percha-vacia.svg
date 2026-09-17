@@ -1,0 +1,7 @@
+<!-- BeCool · percha vacia. Se usa en la pagina 404: no cuelga nada. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 104" role="img" aria-label="Percha vacía">
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100,46 C100,32 89,30 89,19 C89,10 96,5 102,5 C110,5 115,11 115,20"/>
+    <path d="M100,46 L38,93 L162,93 Z"/>
+  </g>
+</svg>

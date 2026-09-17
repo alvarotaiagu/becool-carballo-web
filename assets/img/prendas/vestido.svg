@@ -1,0 +1,12 @@
+<!-- BeCool · prenda del escaparate: vestido midi. Ilustracion plana, sin
+     degradados. El unico toque de acento es el cinturon (objeto pequeño). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 470" role="img" aria-label="Vestido colgado de una percha">
+  <g fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100,46 C100,32 89,30 89,19 C89,10 96,5 102,5 C110,5 115,11 115,20"/>
+    <path d="M100,46 L38,93 L162,93 Z"/>
+  </g>
+  <path fill="#1A1A1A" stroke="#111111" stroke-width="2.5" stroke-linejoin="round"
+        d="M72,88 C62,94 56,104 52,124 C49,140 48,150 50,158 L66,205 C60,250 54,300 51,332 C50,337 53,340 58,340 L142,340 C147,340 150,337 149,332 C146,300 140,250 134,205 L150,158 C152,150 151,140 148,124 C144,104 138,94 128,88 C120,104 111,110 100,110 C89,110 80,104 72,88 Z"/>
+  <rect x="63" y="197" width="74" height="11" rx="2" fill="var(--acento, #C46A4A)"/>
+  <rect x="93" y="194" width="14" height="17" rx="2" fill="none" stroke="#EDE7DD" stroke-width="2.5"/>
+</svg>
