@@ -1,6 +1,6 @@
 {
-  "fecha": "2026-09-17T16:46:05.128Z",
-  "total": 52,
+  "fecha": "2026-09-17T21:10:35.823Z",
+  "total": 54,
   "fallos": 0,
   "resultados": [
     {
@@ -52,6 +52,16 @@
       "prueba": "idioma declarado",
       "ok": true,
       "detalle": "es"
+    },
+    {
+      "prueba": "las miniaturas de Instagram son cuadradas",
+      "ok": true,
+      "detalle": "0,0,0,0,0,0"
+    },
+    {
+      "prueba": "el telefono esta enlazado",
+      "ok": true,
+      "detalle": "tel:+34881168151"
     },
     {
       "prueba": "las perchas cuelgan de la barra",
@@ -144,12 +154,12 @@
       "detalle": ""
     },
     {
-      "prueba": "con la hoja caida siguen los 6 ejemplos",
+      "prueba": "con la hoja caida siguen las 6 prendas pintadas",
       "ok": true,
       "detalle": "6 prendas"
     },
     {
-      "prueba": "con la hoja caida siguen marcados como ejemplo",
+      "prueba": "con la hoja caida siguen sus prendas reales",
       "ok": true,
       "detalle": ""
     },
@@ -169,7 +179,7 @@
       "detalle": ""
     },
     {
-      "prueba": "se quita el aviso de ejemplo",
+      "prueba": "se quita la nota de \"salen de su Instagram\"",
       "ok": true,
       "detalle": ""
     },
@@ -211,7 +221,7 @@
     {
       "prueba": "movimiento reducido: el horario sigue diciendo si esta abierto",
       "ok": true,
-      "detalle": "Abierto ahora"
+      "detalle": "Cerrado ahora"
     },
     {
       "prueba": "movimiento reducido: el horario sigue marcando hoy",

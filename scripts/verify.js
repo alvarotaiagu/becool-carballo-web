@@ -96,6 +96,21 @@ async function conHojaConfigurada(page, id) {
     ok('sin anclas rotas', a11y.anclasRotas.length === 0, a11y.anclasRotas.join(','));
     ok('idioma declarado', a11y.lang === 'es', a11y.lang);
 
+    /* las fotos son cuadradas de verdad en el bloque de Instagram: el
+       atributo height="400" del HTML le gana a aspect-ratio si falta
+       height:auto, y salen rectangulos */
+    const insta = await page.evaluate(() =>
+      [...document.querySelectorAll('.insta-rejilla img')].map((i) => {
+        const r = i.getBoundingClientRect();
+        return Math.abs(r.width - r.height);
+      }));
+    ok('las miniaturas de Instagram son cuadradas',
+      insta.length === 6 && insta.every((d) => d < 2), insta.join(','));
+
+    /* el telefono real, enlazado */
+    const tel = await page.locator('a[href^="tel:"]').first().getAttribute('href');
+    ok('el telefono esta enlazado', tel === 'tel:+34881168151', tel);
+
     /* hero: la barra pasa por dentro del aro de cada percha */
     const hero = await page.evaluate(() => {
       const b = document.querySelector('.hero-barra').getBoundingClientRect();
@@ -221,8 +236,9 @@ async function conHojaConfigurada(page, id) {
     ok('con la hoja configurada se pide la hoja', pedida);
     const n = await page.locator('#lista-novedades .prenda').count();
     const texto = await page.locator('#lista-novedades').innerText();
-    ok('con la hoja caida siguen los 6 ejemplos', n === 6, n + ' prendas');
-    ok('con la hoja caida siguen marcados como ejemplo', texto.includes('[EJEMPLO — SUSTITUIR]'));
+    ok('con la hoja caida siguen las 6 prendas pintadas', n === 6, n + ' prendas');
+    ok('con la hoja caida siguen sus prendas reales',
+      texto.includes('Cazadora de denim chocolate') && texto.includes('49,95 €'));
     ok('con la hoja caida no salta ningun error',
       errores.filter((e) => !/Failed to load resource|net::ERR_FAILED/.test(e)).length === 0,
       errores.join(' | '));
@@ -255,7 +271,7 @@ async function conHojaConfigurada(page, id) {
     }));
     ok('la hoja sustituye las prendas', datos.n === 2, datos.n + ' prendas');
     ok('se pintan los datos de la hoja', datos.texto.includes('Prenda de prueba uno') && datos.texto.includes('19 €'));
-    ok('se quita el aviso de ejemplo', !datos.avisoEjemplo);
+    ok('se quita la nota de "salen de su Instagram"', !datos.avisoEjemplo);
     ok('se mantiene el aviso del WhatsApp pendiente', datos.avisoWhatsapp);
     ok('el enlace de Drive se convierte en miniatura',
       datos.foto === 'https://drive.google.com/thumbnail?id=1AbCdEfGhIjKlMnOpQrStUvWxYz12345&sz=w1200', datos.foto);

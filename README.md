@@ -23,19 +23,19 @@ grep -n "PENDIENTE\|EJEMPLO\|CONFIRMAR" index.html
 
 | Marcador | Dónde | Qué hace falta |
 |---|---|---|
-| `[TELÉFONO PENDIENTE]` | Contacto | No hay teléfono en la ficha de Google |
 | `[WHATSAPP PENDIENTE]` | Contacto y Recién colgado | ¿Se reservan prendas por WhatsApp? ¿Con qué número? |
-| `[EMAIL PENDIENTE]` | Contacto | Correo de la tienda |
-| `[CONFIRMAR CATEGORÍAS Y MARCAS]` | Qué encontrarás (×3) | Marcas que vende y si hay más categorías |
-| `[EJEMPLO — SUSTITUIR]` | Recién colgado | Las 6 prendas son de muestra (ver punto 2) |
+| `a confirmar` (correo) | Contacto | El correo solo aparece en Páxinas Galegas, no en fuente propia |
+| `[CONFIRMAR EL RESTO DE MARCAS]` | Qué encontrarás | Solo está confirmada **Oraije Paris**, que cita ella en Instagram |
 | `[TEXTOS DE RESEÑA PENDIENTES]` | Reseñas | Textos y nombres de las reseñas de Google |
-| `[FOTOS REALES PENDIENTES]` | Dentro de la tienda | 6 fotos del escaparate y del interior |
-| `[FOTOS DE INSTAGRAM PENDIENTES]` | Instagram | 6 fotos del feed, puestas a mano |
+| `[FOTO DEL ESCAPARATE PENDIENTE]` | Dentro de la tienda | Falta la foto del escaparate desde la calle |
 | `[HORARIO ESPECIAL PENDIENTE]` | Cuándo venir | Festivos y cierre por vacaciones |
+| **Domingos** | Cuándo venir | Google dice «domingo 10:30–14:00»; Páxinas Galegas dice «sábados y **domingos de feria**». Hay que preguntarlo |
 
 Datos **reales y confirmados** que ya están puestos: nombre y tagline, dirección,
-categoría (tienda de ropa de mujer), valoración 4,6 ★ con 10 reseñas, horario
-completo (incluido el domingo por la mañana), Facebook e Instagram.
+categoría, valoración 4,6 ★ con 10 reseñas, horario, Facebook e Instagram,
+**teléfono 881 16 81 51** (lo publica ella en su biografía de Instagram y coincide
+con Páxinas Galegas), las **seis prendas con su precio y sus tallas** y **todas las
+fotografías**, que son suyas.
 
 ---
 
@@ -120,30 +120,31 @@ cristal, negro del marco, lino de la tienda) no se toca.
 
 ---
 
-## 4. Sustituir las fotografías
+## 4. Las fotografías
 
-Las 6 fotos de «Dentro de la tienda» son **imágenes de archivo** (Pexels) y
-están marcadas como tales en la propia página. Hay que sustituirlas por fotos
-reales de Rúa Hórreo, 14.
+**Todas las fotos de la web son de la propia tienda**, publicadas por ella en
+[@becoolcarballo](https://www.instagram.com/becoolcarballo/). No hay ni una imagen
+de banco. Se descargan a tamaño original y se recortan con los dos scripts:
 
-Los archivos están en `assets/img/photos/` en dos tamaños:
+```bash
+node scripts/ig_bajar.js scripts/ig_src <codigo> [<codigo>:reel ...]
+python scripts/process_ig.py
+```
 
-| Hueco | Archivos | Proporción |
+`scripts/process_ig.py` lleva una tabla `SALIDAS` con el recorte de cada imagen.
+Hay un detalle que conviene no perder de vista: **varias fotos suyas llevan el
+precio rotulado encima**, y en la web el precio ya lo pone la etiqueta de color,
+así que el recorte está elegido para dejar ese texto fuera. Si se cambian las
+fotos, hay que volver a comprobarlo.
+
+| Dónde | Archivos | Origen |
 |---|---|---|
-| El escaparate desde la calle | `escaparate-640.jpg`, `escaparate-900.jpg` | vertical 3:4 |
-| La barra de colgar | `barra-560.jpg`, `barra-900.jpg` | 4:3 |
-| El rincón del espejo | `espejo-560.jpg`, `espejo-900.jpg` | 4:3 |
-| Detalle de punto | `punto-560.jpg`, `punto-900.jpg` | 4:3 |
-| Calzado | `calzado-560.jpg`, `calzado-900.jpg` | 4:3 |
-| Todo cuelga, todo se ve | `cristal-700.jpg`, `cristal-1200.jpg` | 4:3 |
+| Recién colgado (6 prendas) | `p-*.jpg` | posts del 11 y 17 de septiembre |
+| Dentro de la tienda (6) | `percheros`, `perchas`, `conjunto`, `rayas`, `lechera`, `rail` | recortes de los mismos posts |
+| Instagram (6) | `assets/img/insta/ig-*.jpg` | miniaturas de sus seis últimas publicaciones |
 
-Al poner fotos reales, **quitar la marca «Imagen de archivo»** de ese
-`figcaption` en `index.html` y borrar el aviso del final de la sección.
-
-`scripts/process_photos.py` recorta y ajusta el color de las de archivo; sirve
-igual para las reales (cambiando las rutas de origen).
-
----
+Lo único que falta es una **foto del escaparate desde la calle**: es la imagen que
+da nombre al concepto de la web y no hay ninguna publicada.
 
 ## 5. Estructura
 
@@ -153,7 +154,8 @@ css/style.css              todo el estilo
 js/main.js                 movimiento, hoja de novedades, horario, mapa
 assets/img/brand/          logotipo vectorizado y favicon
 assets/img/prendas/        las 6 prendas dibujadas del escaparate (SVG)
-assets/img/photos/         fotografías (de archivo, a sustituir)
+assets/img/tienda/         fotografías reales de la tienda (de su Instagram)
+assets/img/insta/          miniaturas del feed de Instagram
 scripts/                   utilidades de desarrollo (no hacen falta en producción)
 screenshots/               capturas de la verificación
 ```
@@ -203,7 +205,7 @@ python -m http.server 8099                      # servidor local
 node scripts/verify.js                           # comprobaciones automáticas
 node scripts/shots.js                            # capturas de todas las secciones
 node scripts/generate_og.js                      # imagen de Open Graph
-node scripts/contact_sheets.js "consulta"        # hojas de contacto de Pexels
-python scripts/process_photos.py                 # recorte y grado de color
+node scripts/ig_bajar.js scripts/ig_src <cod>    # baja fotos suyas a tamaño original
+python scripts/process_ig.py                     # recorte y grado de color
 python scripts/trace_logo.py                     # vectorizado del logotipo
 ```

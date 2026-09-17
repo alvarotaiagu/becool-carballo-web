@@ -633,7 +633,8 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
   overflow: hidden;
 }
 .prenda-foto img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform .8s cubic-bezier(.22,1,.36,1);
 }
@@ -695,8 +696,10 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
 .etiqueta b {
   grid-area: 1 / 1;
   align-self: center;
-  transform: translate(12px, 13px);
-  font-size: .82rem;
+  /* centrado sobre el cuerpo de la etiqueta (de 32 a 112 de 116), no
+     sobre la caja: si no, "49,95 €" se monta sobre el agujero */
+  transform: translate(19px, 13px);
+  font-size: .78rem;
   font-weight: 600;
   letter-spacing: .06em;
   color: #fff;
@@ -999,24 +1002,22 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
   grid-template-columns: repeat(6, 1fr);
   gap: clamp(.6rem, 1.4vw, 1rem);
 }
-.insta-rejilla a { display: block; text-decoration: none; }
-.insta-hueco {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  background: var(--lino);
+.insta-rejilla a {
+  display: block;
+  text-decoration: none;
   border: 1.5px solid var(--marco);
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--tinta-tenue);
-  text-align: center;
-  padding: .5rem;
-  transition: background-color .35s ease, color .35s ease;
+  overflow: hidden;
 }
-.insta-rejilla a:hover .insta-hueco { background: var(--marco); color: var(--lino); }
+.insta-rejilla img {
+  width: 100%;
+  height: auto;          /* sin esto, el atributo height="400" del HTML
+                            le gana a aspect-ratio y sale un rectángulo */
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--lino);
+  transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .35s ease;
+}
+.insta-rejilla a:hover img { transform: scale(1.06); opacity: .88; }
 .insta-pie { display: flex; gap: .85rem; flex-wrap: wrap; margin: clamp(2rem, 4vw, 3rem) 0 0; }
 
 /* ===============================================================
@@ -1045,6 +1046,18 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
 }
 .datos dd a { text-decoration: none; border-bottom: 1px solid var(--lino-borde); }
 .datos dd a:hover { border-bottom-color: var(--acento); }
+.a-confirmar {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .1rem .45rem;
+  border: 1px solid var(--lino-borde);
+  font-size: .56rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-tenue);
+  vertical-align: .15em;
+}
 .datos dd.pendiente {
   font-size: .8rem;
   letter-spacing: .14em;
@@ -1113,6 +1126,30 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
   letter-spacing: .26em;
   color: rgba(237, 231, 221, .38);
 }
+
+/* ===============================================================
+   Botón flotante de llamada
+   =============================================================== */
+.llamar {
+  position: fixed;
+  z-index: 95;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  width: 3.5rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--acento);
+  color: #fff;
+  border: 1.5px solid var(--acento);
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.15rem;
+  box-shadow: 0 14px 30px -18px rgba(17, 17, 17, .7);
+  transition: background-color .35s ease, border-color .35s ease;
+  will-change: transform;
+}
+.llamar:hover { background: var(--marco); border-color: var(--marco); }
 
 /* ===============================================================
    Aviso de cookies
@@ -1213,6 +1250,7 @@ html.has-motion .pano-marco i:nth-child(4) { transform: scaleY(0); }
   .insta-rejilla { grid-template-columns: repeat(2, 1fr); }
   .etiqueta { width: 100px; }
   .etiqueta svg { width: 100px; height: 74px; }
+  .etiqueta b { transform: translate(16px, 11px); font-size: .72rem; }
   .cookie-banner:not([hidden]) { flex-direction: column; align-items: stretch; text-align: left; }
 }
 

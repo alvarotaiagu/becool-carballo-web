@@ -228,8 +228,9 @@
       );
     }).join("");
 
-    /* fuera el aviso de "son de ejemplo": ya no lo son. El aviso del
-       WhatsApp pendiente se queda, que ese sigue haciendo falta. */
+    /* fuera la nota de "estas prendas salen de su Instagram": al
+       conectar la hoja ya no vienen de ahi. El aviso del WhatsApp
+       pendiente se queda, que ese sigue haciendo falta. */
     const aviso = $("[data-aviso-ejemplo]");
     if (aviso) aviso.remove();
     return true;
