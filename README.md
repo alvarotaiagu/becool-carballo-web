@@ -4,6 +4,8 @@ Web de una página para **BeCool**, tienda de ropa de mujer en Rúa Hórreo, 14,
 Carballo (A Coruña). HTML, CSS y un archivo de JavaScript. Sin framework, sin
 build, sin backend: se sube tal cual a cualquier hosting estático.
 
+**Publicada en <https://alvarotaiagu.github.io/becool-carballo-web/>**
+
 El concepto es **«Escaparate»**: la cristalera de marco negro de Rúa Hórreo
 llevada a la pantalla. Todo cuelga de una barra, todo se ve desde la calle, y
 se entra. No hay carrito ni pagos: se compra en la tienda.
