@@ -203,7 +203,9 @@ a { color: inherit; }
    se retira al instante y nadie ve un panel a medias.
    Ojo: .cortina usa display:grid, asi que [hidden] necesita su regla.
    --------------------------------------------------------------- */
-.cortina { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; background: var(--marco); }
+/* sin fondo propio: el color lo ponen las lamas. Si el panel tuviera
+   fondo, al subir la persiana se destaparia el panel y no el escaparate. */
+.cortina { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; }
 .cortina[hidden] { display: none; }
 html.cortina-puesta { overflow: hidden; }
 
